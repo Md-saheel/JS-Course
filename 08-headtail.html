@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>heads tails</title>
+</head>
+<body>
+  <p>heads tails</p>
+
+  <button onclick="
+    playGame('heads');
+  ">heads</button>
+
+  <button onclick="
+    playGame('tails');
+  ">tails</button>
+
+  <script>
+    const score = JSON.parse(localStorage.getItem('score')) || {
+        wins: 0,
+        losses: 0,
+      };
+    function playGame(playerMove){
+      const computerMove = pickComputerMove();
+
+    console.log(computerMove);
+
+    let result = '';
+     if (playerMove === 'heads') {
+      if (computerMove === 'heads') {
+        result = 'You Win.';
+    }
+      else if (computerMove === 'tails') {
+        result = 'You Lose.';
+    }
+    
+    } else if(playerMove === 'tails') {
+      if (computerMove === 'tails') {
+      result = 'You Win.';
+    }
+    else if (computerMove === 'heads') {
+      result = 'You lose.';
+    }
+    }
+    
+    
+    
+    function pickComputerMove(){
+      const randomNumber = Math.random();
+
+      let computerMove = '';
+
+    if(randomNumber >= 0 && randomNumber < 1/2) {
+      computerMove = 'heads';
+    }
+    else if(randomNumber >= 1/2 && randomNumber < 1) {
+      computerMove = 'tails';
+    }
+    
+
+    return computerMove;
+    }
+
+    if (playerMove === computerMove){
+      score.wins++
+    }
+    else{
+      score.losses++
+    }
+
+    localStorage.setItem("score", JSON.stringify(score));
+
+    alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}\nwins: ${score.wins}\nlosses: ${score.losses}`)
+    }
+  </script>
+</body>
+</html>

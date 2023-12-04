@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM exercise</title>
+</head>
+<body>
+  <button>
+    9a
+  </button>
+  <button class="js-done">
+    9b
+  </button>
+  <button onclick="
+      document.querySelector('.js-choice')
+        .innerHTML = 'You chose: heads';
+    ">heads</button>
+
+    <button onclick="
+      document.querySelector('.js-choice')
+        .innerHTML = 'You chose: tails';
+    ">tails</button>
+
+    <p class="js-choice"></p>
+
+    <input class="js-name" placeholder="Name" onkeydown="
+    console.log(event.key);
+    handleCostKeyDown(event);
+    ">
+
+    <button class="js-submit" onclick="
+    let myName = document.querySelector('.js-name')
+    document.querySelector('.Name').innerHTML = `Your name is:${myName.value}`;
+    ">Submit</button>
+
+    <p class="Name"></p>
+    <input class="js-key" onkeyup="
+    const inputElement = document.querySelector('.js-key');
+        document.querySelector('.js-para')
+          .innerHTML = inputElement.value;
+      
+    ">
+
+    <p class="js-para"></p>
+
+  <script>
+   var btn = document.querySelector('button');
+   console.log(btn);
+   var done = document.querySelector('.js-done');
+   done.innerHTML = '9b done!';
+   
+   function handleCostKeyDown(event){
+    if(event.key === "Enter"){
+      let myName = document.querySelector('.js-name')
+    document.querySelector('.Name').innerHTML = `Your name is:${myName.value}`;
+    
+   }
+
+  </script>
+</body>
+</html>
